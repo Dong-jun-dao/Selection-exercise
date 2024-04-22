@@ -29,7 +29,14 @@ def F1(x):
 
 # Power
 def F2(x):
-    return np.sum([abs(xi)**(i + 1) for i, xi in enumerate(x)])
+    if x.ndim >= 2:
+        D = x.shape[1]
+    else:
+        D = len(x)  # 获取输入数组x的维度
+    f = np.zeros(D)  # 初始化一个与x维度相同的数组，用于存储中间计算结果。
+    for i in range(D):  # 遍历x中的每一个元素。
+        f[i] = np.abs(x[i]) ** (i + 2)  # 对每个元素取绝对值，然后将其乘方，指数为元素的索引+2(因为matlab从1到D，Python是从0到D-1)。
+    return np.sum(f)  # 将所有处理过的元素求和，得到函数的最终值。
 
 # Zakharov
 def F3(x):
