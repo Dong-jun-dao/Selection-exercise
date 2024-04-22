@@ -1,4 +1,3 @@
-import numpy as np
 from BenchmarkFunctions import BenchmarkFunctions
 from RUN import RUN
 import matplotlib.pyplot as plt
